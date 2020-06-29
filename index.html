@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | Rock, Paper, Scissors, Lizard, Spock</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,600,700&amp;lang=en"
+    type="text/css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <h1 aria-hidden="true">Game | Rock, Paper, Scissors, Lizard, Spock</h1>
+  <div class="header">
+    <div class="logo">
+      <img src="images/logo-bonus.svg" alt="Rock,Paper,Scissors,Lizard,Spock">
+    </div>
+
+    <div class="score" role="region">
+      <span>Score</span>
+      <span id="score">0</span>
+    </div>
+  </div> <!-- /.header -->
+
+  <aside class="sound-switch">
+    <input id="switch" type="checkbox">
+    <label for="switch"></label>
+    <span>BG-SOUND</span>
+  </aside>
+
+  <div class="main">
+    <section id="startPage">
+      <h2 aria-hidden="true">Home Page | Start Game</h2>
+      <div data-choice="scissors" class="icon scissors" role="button" tabindex="1"></div>
+      <div data-choice="spock" class="icon spock" role="button" tabindex="2"></div>
+      <div data-choice="paper" class="icon paper" role="button" tabindex="3"></div>
+      <div data-choice="lizard" class="icon lizard" role="button" tabindex="4"></div>
+      <div data-choice="rock" class="icon rock" role="button" tabindex="5"></div>
+    </section>
+
+    <section id="resultPage">
+      <h2 aria-hidden="true">Result Page</h2>
+      <div id="userIcon" class="icon"></div>
+      <div id="houseIcon" class="icon"></div>
+      <div id="youPicked" class="picked">
+        YOU PICKED
+      </div>
+      <div id="housePicked" class="picked">
+        THE HOUSE PICKED
+      </div>
+
+      <div id="whoWin"></div>
+      <button id="playAgain">PLAY AGAIN</button>
+    </section>
+
+    <button id="openModal">RULES</button>
+  </div> <!-- .main -->
+
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="https://maujor.com" target="_blank">Maujor</a>.
+  </footer>
+
+  <div id="modal" aria-hidden="true" role="dialog">
+    <div id="modalContent">
+      <button id="closeModal">&times;</button>
+      <p><img src="images/image-rules-bonus.svg" alt="Game Rules"></p>
+    </div>
+  </div> <!-- /#modal -->
+
+
+  <audio data-sound="bg-sound">
+    <source src="sounds/bgSound.mp3" type="audio/mpeg">
+    <source src="sounds/bgSound.wav" type="audio/wav">
+  </audio>
+
+  <audio data-sound="user-choice">
+    <source src="sounds/userChoice.mp3" type="audio/mpeg">
+    <source src="sounds/userChoice.wav" type="audio/wav">
+  </audio>
+
+  <audio data-sound="you-win">
+    <source src="sounds/youWin.mp3" type="audio/mpeg">
+    <source src="sounds/youWin.wav" type="audio/wav">
+  </audio>
+
+  <audio data-sound="you-lose">
+    <source src="sounds/youLose.mp3" type="audio/mpeg">
+    <source src="sounds/youLose.wav" type="audio/wav">
+  </audio>
+
+  <audio data-sound="draw">
+    <source src="sounds/draw.mp3" type="audio/mpeg">
+    <source src="sounds/draw.wav" type="audio/wav">
+  </audio>
+
+  <script src="js/scripts.js">
+  </script>
+</body>
+
+</html>

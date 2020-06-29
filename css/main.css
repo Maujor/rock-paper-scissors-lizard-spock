@@ -1,0 +1,461 @@
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  height: 100%;
+  background-color:hsl(237, 49%, 15%);
+  background-image: radial-gradient(hsl(214, 43%, 35%), hsl(237, 49%, 15%));
+}
+* {box-sizing: inherit;}
+body {
+  margin: 4rem 0;
+  font: 600 1rem "Barlow Semi Condensed", Sans-serif;
+}
+:focus {
+  outline: 3px dotted hsl(0, 100%, 50%);
+}
+.header {
+  display: flex;
+  width: 100%;
+  max-width: 76rem;
+  margin: 0 auto;
+  justify-content: space-between;
+  padding: 1.5rem 3rem;
+  border: 2px solid hsl(217, 16%, 45%);
+  border-radius: 8px;
+}
+.score {
+  width: 12rem;
+  text-align: center;
+  line-height: 4.5rem;
+  background: hsl(0, 0%, 100%);
+  color: hsl(229, 25%, 31%);
+  border-radius: 8px;
+}
+.score > span {
+  display: block;
+}
+.score > span:first-child {
+  color: hsl(229, 64%, 46%);
+  font-size: 1.6rem;
+  text-transform: uppercase;
+}
+#score {
+  font-size: 6rem;
+  font-weight: 700;
+}
+/* Sound Switch */
+.sound-switch {
+  margin: 10px auto;
+  width: 6rem;
+}
+#switch {
+  visibility: hidden;
+  position: absolute;
+  margin-left: -9999px;
+}
+.sound-switch span {
+  display: block;
+  text-align: center;
+  color: white;
+  font-size: 1.4rem;
+  margin: 0;
+}
+#switch + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+#switch + label {
+  padding: 2px;
+  width: 6rem;
+  height: 3rem;
+  background-color: hsl(0, 2%, 81%);
+  border-radius: 3rem;
+}
+#switch + label:before,
+#switch + label:after {
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  bottom: 1px;
+  content: "";
+}
+#switch + label:before {
+  right: 1px;
+  background-color: hsl(0, 0%, 95%);
+  border-radius: 3rem;
+  transition: background 0.4s;
+}
+#switch + label:after {
+  width: 3rem;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 100%;
+  box-shadow: 0 2px 5px hsla(0, 0%, 0%, 0.3);
+  transition: all 0.4s;
+}
+#switch:checked + label:before {
+  background-color:hsl(198, 80%, 57%);
+}
+#switch:checked + label:after {
+  transform: translateX(3rem);
+}
+/* End Sound Switch */
+.main { 
+  position: relative;
+  width: 100%;
+  max-width: 42rem;
+  margin: 0 auto;
+  height: 50rem;
+  background-image: url(../images/bg-pentagon.svg);
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-position: center 6rem;
+}
+body h1, section h2 {display: none;}
+.result .main {
+  max-width: 96rem;
+  height: 34rem;
+  background-image: none;
+}
+.icon {
+  cursor: pointer;
+  width: 12rem;
+  height: 12rem;
+  position: absolute;
+  border: 14px solid;
+  border-radius: 50%;  
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: hsl(0, 0%, 100%);
+  transition: ease-out 300ms;
+}
+.icon:hover {
+  transform: scale(1.1);
+  transition: ease-in 300ms;
+  opacity: 0.85;
+}
+.scissors {
+  top: 0;
+  left: calc(50% - 6.5rem);
+  background-image: url(../images/icon-scissors.svg);
+  border-color: hsl(40, 84%, 53%);
+  box-shadow: 0 6px 0 0 hsl(40, 94%, 40%), inset 0 6px 3px 0 hsl(240, 1%, 63%);
+}
+.spock {
+  top: 11rem;
+  left: calc(50% - 21rem);
+  background-image: url(../images/icon-spock.svg);
+  border-color: hsl(189, 58%, 57%);
+  box-shadow: 0 6px 0 0 hsl(189, 68%, 44%), inset 0 6px 3px 0 hsl(240, 1%, 63%);
+}
+.paper {
+  top: 11rem;
+  right: calc(50% - 21rem);
+  background-image: url(../images/icon-paper.svg);
+  border-color: hsl(231, 91%, 66%);
+  box-shadow: 0 6px 0 0 hsl(231, 94%, 42%), inset 0 6px 3px 0 hsl(240, 1%, 63%);
+}
+.lizard {
+  top: 29rem;
+  left: calc(50% - 15rem);
+  background-image: url(../images/icon-lizard.svg);
+  border-color: hsl(261, 63%, 63%);
+  box-shadow: 0 6px 0 0 hsl(261, 67%, 42%), inset 0 6px 3px 0 hsl(240, 1%, 63%);
+}
+.rock {
+  top: 29rem;
+  right: calc(50% - 15rem);
+  background-image: url(../images/icon-rock.svg);
+  border-color: hsl(350, 68%, 56%);
+  box-shadow: 0 6px 0 0 hsl(350, 94%, 32%), inset 0 6px 3px 0 hsl(240, 1%, 63%);
+}
+#openModal {
+  position: absolute;
+  top: 45rem;
+  left: 55vw;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  background: transparent;
+  border: 1px solid hsl(217, 16%, 45%);
+  border-radius: 6px;
+  color: hsl(0, 0%, 100%);
+  width: 11rem;
+  padding: 1rem 0;
+  font-weight: 700;
+  cursor: pointer;
+  transition: ease-out 300ms;
+}
+.result #openModal {
+  top: 30rem;
+  right: 0rem;
+  left: auto;
+}
+#openModal:hover {
+  background: hsl(228, 100%, 85%);
+  transition: ease-in 300ms;
+}
+.attribution { 
+  font-size: 1.4rem;
+  color: hsl(0, 0%, 100%);
+  text-align: center; 
+}
+.attribution a, .attribution a:visited { 
+  color: hsl(228, 79%, 72%); 
+}
+.attribution a:hover { 
+  color: hsl(228, 100%, 85%);
+  text-decoration: none; 
+}
+#resultPage {
+  display: none;
+}
+#resultPage .icon {
+  width: 15rem;
+  height: 15rem;
+  top: 3rem;
+}
+#resultPage .icon {
+cursor: default;
+}
+#resultPage .icon:hover {
+  transform: scale(1);
+}
+#userIcon {
+  left: 10rem
+}
+#houseIcon {
+  left: auto;
+  right: 10rem
+}
+.picked {
+  position: absolute;
+  top: 0rem;
+  font-size: 2rem;
+  color: hsl(0, 0%, 100%);
+}
+#youPicked {
+  left: 13.5%;
+}
+#housePicked {
+  right: 11%;
+}
+
+#whoWin, #playAgain {
+  display: none;
+}
+#whoWin {
+  text-align: center;
+  width:25rem;
+  position: absolute;
+  top: 14rem;
+  left: calc(50% - 12.5rem);
+  font-size: 4rem;
+  color: hsl(0, 0%, 100%);
+}
+/* You Win Text Animation */
+@keyframes animateYouWinMessage {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/* You Win Text Animation */
+#you-win-message {
+  animation-name: animateYouWinMessage;
+  animation-duration: 300ms;
+  animation-timing-function: linear;
+}
+#playAgain {
+  position: absolute;
+  width: 20rem;
+  top: 20rem;
+  left: calc(50% - 10rem);
+  font: 2rem "Barlow Semi Condensed", sans-serif;
+  background: hsl(0, 0%, 100%);
+  border: 1px solid hsl(217, 16%, 45%);
+  border-radius: 6px;
+  color: hsl(229, 25%, 31%);
+  padding: 1rem 0;
+  font-weight: 700;
+  cursor: pointer;
+  transition: ease-out 300ms;
+}
+#playAgain:hover {
+  background: hsl(228, 100%, 85%);
+  color: hsl(228, 96%, 18%);
+  transition: ease-in 300ms;
+}
+/* Modal */
+#modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 5rem;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: hsl(0, 0%, 0%);
+  background-color: hsla(0, 0%, 0%, 0.8);
+}
+/* Modal Content */
+#modalContent {
+  position: relative;
+  background-color: hsl(0, 0%, 100%);
+  margin: auto;
+  width: 100%;
+  max-width: 40rem;
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid hsl(0, 0%, 53%);
+  border-radius: 10px;
+  animation-name: animateshow;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+#modalContent img {
+  width: 100%;
+}
+/* The Close Modal Button */
+#closeModal {
+  color: hsl(0, 0%, 67%);
+  float: right;
+  font-size: 5rem;
+  font-weight: bold;
+  width: 4rem;
+  height: 4rem;
+  line-height: 4rem;
+  background: none;
+  border: none;
+}
+#closeModal:hover,
+#closeModal:focus {
+  color: hsl(0, 0%, 0%);
+  text-decoration: none;
+  cursor: pointer;
+}
+/* Modal Animation */
+@keyframes animateshow {
+  from {
+    top: -50rem;
+  }
+
+  to {
+    top: 0;
+  }
+}
+/* End Modal */
+/* Media Queries */
+@media screen and (max-width: 42rem) {
+  .modal-content img {
+    width: 80%
+  }
+  body {
+    margin: 1rem;
+  }
+ .header { 
+    max-width: 42rem;
+    height: 10rem;
+    padding: 0.5rem 1rem;
+  }
+  .logo img {
+    height: 9rem !important;
+  }
+  .score {
+    height: 8.5rem;
+    line-height: normal;
+  }
+  #score {
+    font-size: 5rem;
+  }
+  .main {
+    background-size: 24rem;
+    background-position: 50% 4rem;
+    height: 30.5rem;
+  }
+  .result .main {
+    height: 30rem;
+  }
+  .icon  {
+    transform: scale(0.7);
+  }
+  .icon:hover {
+    transform: scale(0.9);
+    transition: ease-in 300ms;
+    opacity: 0.85;
+  }
+  #resultPage .icon:hover {
+    transform: scale(.8);
+    cursor: default;
+  }  
+  .scissors {
+    top: -2rem;
+    left: calc(50% - 5.5rem);
+  }
+  .spock {
+    top: 6rem;
+    left: calc(50% - 17.5rem);
+  }
+  .paper {
+    top: 6rem;
+    right: calc(50% - 17.5rem);
+  }
+  .lizard {
+    top: 19rem;
+    left: calc(50% - 12.5rem);
+  }
+  .rock {
+    top: 19rem;
+    right: calc(50% - 12.5rem);
+  }
+  .picked {
+    font-size:1.5rem;
+    top: 11rem;
+  }
+  #youPicked {
+    left: 1rem;
+  }
+  #housePicked {
+    right: 0.5rem;
+  }
+  #resultPage .icon {
+    top: -3rem;
+  }
+  #userIcon {
+    left:0;
+  }
+  #houseIcon {
+    right:0;
+  }
+  #playAgain {
+    top: 18rem;
+  }
+  #whoWin {
+    top: 13rem;
+    font-size: 3rem;
+  }
+  .result #openModal {
+    top: 24rem;
+    left: calc(50% - 55px);
+  }
+  .result #openModal {
+    top: 24rem;
+    left: calc(50% - 55px);
+  }
+  #openModal {
+    top:31rem;
+    left: calc(50% - 55px);
+  }
+  .main {
+    height:36rem;
+}
+}
+/* End Media Queries */
