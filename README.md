@@ -1,3 +1,6 @@
+![Ver a solução do Maujor aqui no GitHub](https://maujor.github.io/rock-paper-scissors-lizard-spock/) 
+
+
 # Frontend Mentor - Rock, Paper, Scissors
 
 ![Design preview for the Rock, Paper, Scissors coding challenge](./design/desktop-preview.jpg)
