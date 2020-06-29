@@ -1,4 +1,4 @@
-![Ver a solução do Maujor aqui no GitHub](https://maujor.github.io/rock-paper-scissors-lizard-spock/) 
+[Ver a solução do Maujor aqui no GitHub](https://maujor.github.io/rock-paper-scissors-lizard-spock/) 
 
 
 # Frontend Mentor - Rock, Paper, Scissors
