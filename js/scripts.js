@@ -18,8 +18,8 @@ window.addEventListener("click", (event) => {
     modal.style.display = "none";
   }
 })
-// END MODAL
 
+// GLOBALS
 const allChoices = ["scissors", "spock", "paper", "lizard", "rock"];
 const startPage = document.querySelector("#startPage");
 const arrChoices = startPage.querySelectorAll("div");
@@ -30,14 +30,24 @@ const userIcon = resultPage.querySelector("#userIcon")
 const houseIcon = resultPage.querySelector("#houseIcon")
 const messageWhoWin = document.querySelector("#whoWin");
 const playAgainButton = document.querySelector("#playAgain");
-//sounds
+const resetLocalStorage = document.querySelector("#reset-local-storage");
+
+//SOUNDS GLOBALS
 const bgSound = document.querySelector("[data-sound=bg-sound]");
 const audioUserChoice = document.querySelector("[data-sound=user-choice]");
 const audioYouWin = document.querySelector("[data-sound=you-win]");
 const audioYouLose = document.querySelector("[data-sound=you-lose]");
 const audioDraw = document.querySelector("[data-sound=draw]");
 
+// local Storage
+score.innerHTML = localStorage.str_scoreTotal ? parseInt(localStorage.str_scoreTotal) : 0;
+resetLocalStorage.addEventListener("click", () => {
+  localStorage.removeItem("str_scoreTotal");
+  score.innerHTML = 0;
+  containerScore.style.backgroundColor = "hsl(0,0%,100%)";
+});
 
+// START PLAY
 const handleClick = (event) => {
   audioUserChoice.play();
   document.body.classList.toggle("result")
@@ -54,17 +64,20 @@ const handleClick = (event) => {
   startPage.style.display = "none";
   resultPage.style.display = "block";
   userIcon.classList.toggle(userPlayerChoice);
-  scoreTotal = 0;
+
+  // PRINT SCORE
   whoWin = () => {
     scoreTotal = parseInt(score.innerHTML);
     let showScoreTotal = () => {
       setTimeout(() => {
         score.innerHTML = scoreTotal;
+        localStorage.setItem("str_scoreTotal", scoreTotal);
         let bgScore = scoreTotal < 0 ? "hsl(0, 100%, 50%)" : scoreTotal == 0 ? "hsl(0, 0%, 100%)" : "rgb(183, 241, 183)";
         containerScore.style.backgroundColor = bgScore;
       }, 1000);
     };
 
+    // GAME RULES CONDITIONS
     if (userPlayerChoice == housePlayerChoice) {
       messageWhoWin.innerHTML = "<div id=\"draw-message\">DRAW &#128561;<div>";
       setTimeout(() => { audioDraw.play() }, 1000);
