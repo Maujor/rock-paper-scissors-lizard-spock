@@ -178,6 +178,7 @@ body h1, section h2 {display: none;}
   border: 1px solid hsl(217, 16%, 45%);
   border-radius: 6px;
   color: hsl(0, 0%, 100%);
+  display: block;
   width: 11rem;
   margin: 8px auto;
   padding: 1rem 0;
