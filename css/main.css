@@ -173,15 +173,13 @@ body h1, section h2 {display: none;}
   box-shadow: 0 6px 0 0 hsl(350, 94%, 32%), inset 0 6px 3px 0 hsl(240, 1%, 63%);
 }
 #openModal {
-  position: absolute;
-  top: 45rem;
-  left: 55vw;
   font-family: "Barlow Semi Condensed", sans-serif;
   background: transparent;
   border: 1px solid hsl(217, 16%, 45%);
   border-radius: 6px;
   color: hsl(0, 0%, 100%);
   width: 11rem;
+  margin: 8px auto;
   padding: 1rem 0;
   font-weight: 700;
   cursor: pointer;
